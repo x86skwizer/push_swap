@@ -3,12 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yamrire <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 05:05:31 by yamrire           #+#    #+#             */
-/*   Updated: 2022/08/23 05:21:48 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/08/24 02:55:41 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libftprintf.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
+# include "./includes/libftprintf.h"
+# include <stdlib.h>
+
+#endif
