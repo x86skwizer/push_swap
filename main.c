@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yamrire <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 04:58:40 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/01 13:19:19 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/08 20:17:41 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ int	main(int ac, char **av)
 		while (av[i])
 		{
 			j = 0;
-			while (av[i][j])
-			{
+			if (!av[i][j])
+				ft_exit("ERROR : I only accept integers !");
+			while (av[i][j]) 
+			{ 
 				if (ft_strchr("+-0123456789", av[i][j]))
 				{
 					if (av[i][j] == '+' || av[i][j] == '-')
