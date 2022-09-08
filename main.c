@@ -3,23 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yamrire <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 04:58:40 by yamrire           #+#    #+#             */
-/*   Updated: 2022/08/27 06:54:36 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/01 13:19:19 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_exit(char *str)
+{
+	ft_printf("%s\n", str);
+	exit(-1);
+}
 
 int	main(int ac, char **av)
 {
 	int	*arr;
 	int	low;
 	int	i;
+	int	j;
+	int	sign;
 
     if (ac > 1)
     {
+		i = 1;
+		sign = 0;
+		while (av[i])
+		{
+			j = 0;
+			while (av[i][j])
+			{
+				if (ft_strchr("+-0123456789", av[i][j]))
+				{
+					if (av[i][j] == '+' || av[i][j] == '-')
+					{
+						if (sign != 0)
+							ft_exit("ERROR : I only accept integers !");
+						else
+							sign += 1;
+					}
+					j++;
+				}
+				else
+					ft_exit("ERROR : I only accept integers !");
+			}
+			i++;
+		}
 		arr = malloc((ac - 1) * sizeof(int));
 		i = 1;
 		low = 0;
