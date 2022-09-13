@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yamrire <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 04:58:40 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/08 20:17:41 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/13 07:21:42 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,41 @@ void	ft_exit(char *str)
 	exit(-1);
 }
 
+int	is_sorted(char *arr)
+{
+	int	i;
+	
+	if (arr)
+	{
+		i = 1;
+		while (arr[i])
+		{
+			if (arr[i] < arr[i - 1])
+				i++;
+			else
+				return (0);
+		}
+	}
+	else
+		ft_exit("ERROR : Empty array !");
+	return (1);
+	
+}
+
+// int	*quicksort(char *arr, int start, int end)
+// {
+// 	if (start < end)
+// 	{
+// 		if (!(is_sorted(arr)))
+// 		{
+			
+// 		}
+// 	}
+// }
+
 int	main(int ac, char **av)
 {
-	int	*arr;
+	t_data data;
 	int	low;
 	int	i;
 	int	j;
@@ -53,17 +85,17 @@ int	main(int ac, char **av)
 			}
 			i++;
 		}
-		arr = malloc((ac - 1) * sizeof(int));
+		data.arr = malloc((ac - 1) * sizeof(int));
 		i = 1;
 		low = 0;
 		while (i < ac)
 		{
-			// check_av_type(ac, av);
-			arr[low] = ft_atoi(av[i]);
-			ft_printf("arr[%d] = %d\n", low, arr[low]);
+			data.arr[low] = ft_atoi(av[i]);
 			i++;
 			low++;
 		}
+		data.size = ac;
+		data.sort_arr = quicksort(data.arr, 0, data.size - 1);
 	}
 	return (0);
 }
