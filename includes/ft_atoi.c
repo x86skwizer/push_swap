@@ -6,7 +6,7 @@
 /*   By: yamrire <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 21:53:01 by yamrire           #+#    #+#             */
-/*   Updated: 2022/08/24 02:20:04 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/09 03:10:48 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ int	ft_atoi(const char *str)
 		}
 		src++;
 	}
+	if ((num * sign) > 2147483647 || (num * sign) < -2147483648)
+		ft_exit("ERROR : I only accept integers !");
 	return (num * sign);
 }

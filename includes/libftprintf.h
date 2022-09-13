@@ -6,7 +6,7 @@
 /*   By: yamrire <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 14:03:27 by yamrire           #+#    #+#             */
-/*   Updated: 2022/08/24 02:59:08 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/09 03:10:30 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int		ft_nbr_base(unsigned long long n, int base, int which, int *len);
 int		ft_atoi(const char *str);
 char	*ft_strchr(const char *str, int c);
 size_t	ft_strlen(const char *str);
+void	ft_exit(char *str);
 
 #endif
