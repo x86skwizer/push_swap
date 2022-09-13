@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yamrire <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 21:53:01 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/09 03:10:48 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/13 22:00:54 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	initiate_atoi(char **src, int *sign)
 int	ft_atoi(const char *str)
 {
 	char	*src;
-	long	num;
+	long long	num;
 	int		sign;
 
 	if (!ft_strlen(str))

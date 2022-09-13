@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yamrire <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 04:58:40 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/13 11:31:51 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/13 22:05:08 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ void	integer_check(char *arr)
 	{ 
 		if (ft_strchr("+-0123456789", arr[j]))
 		{
+			if (j > 10)
+				ft_exit("ERROR : I only accept integers !");
 			if (arr[j] == '+' || arr[j] == '-')
 			{
 				if (sign != 0)
@@ -138,31 +140,28 @@ int	main(int ac, char **av)
 			j++;
 		}
 		i = 0;
-		j = 1;
 		quicksort(data.sort_arr, 0, data.size - 1);
 		//Check for duplicated integers
-		while (j < data.size)
+		while (i < data.size - 1)
 		{
-			if (data.sort_arr[i] == data.sort_arr[j])
+			if (data.sort_arr[i] == data.sort_arr[i + 1])
 				ft_exit("ERROR: I don't accept duplicated integers !");
 			i++;
-			j++;
+		}
+		i = 0;
+		while (i < data.size)
+		{
+			ft_printf("arr[%d] = %d\n", i, data.arr[i]);
+			i++;
+		}
+		i = 0;
+		while (i < data.size)
+		{
+			ft_printf("sort_arr[%d] = %d\n", i, data.sort_arr[i]);
+			i++;
 		}
 	}
 	else
 		ft_exit("ERROR : You need at least 1 parameter !");
 	return (0);
 }
-
-		// i = 0;
-		// while (i < data.size)
-		// {
-		// 	ft_printf("arr[%d] = %d\n", i, data.arr[i]);
-		// 	i++;
-		// }
-		// i = 0;
-		// while (i < data.size)
-		// {
-		// 	ft_printf("sort_arr[%d] = %d\n", i, data.sort_arr[i]);
-		// 	i++;
-		// }
