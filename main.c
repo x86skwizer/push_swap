@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yamrire <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 04:58:40 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/13 08:01:52 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/13 11:31:51 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,52 +82,87 @@ void	quicksort(int *arr, int start, int end)
 	}
 }
 
+void	integer_check(char *arr)
+{
+	int	j;
+	int	sign;
+	
+	j = 0;
+	sign = 0;
+	if (!arr[j])
+		ft_exit("ERROR : I only accept integers !");
+	while (arr[j]) 
+	{ 
+		if (ft_strchr("+-0123456789", arr[j]))
+		{
+			if (arr[j] == '+' || arr[j] == '-')
+			{
+				if (sign != 0)
+					ft_exit("ERROR : I only accept integers !");
+				else
+					sign += 1;
+			}
+			j++;
+		}
+		else
+			ft_exit("ERROR : I only accept integers !");
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_data data;
-	int	low;
 	int	i;
 	int	j;
-	int	sign;
 
     if (ac > 1)
     {
 		i = 1;
-		sign = 0;
+		//Check if all the args are integers
 		while (av[i])
 		{
-			j = 0;
-			if (!av[i][j])
-				ft_exit("ERROR : I only accept integers !");
-			while (av[i][j]) 
-			{ 
-				if (ft_strchr("+-0123456789", av[i][j]))
-				{
-					if (av[i][j] == '+' || av[i][j] == '-')
-					{
-						if (sign != 0)
-							ft_exit("ERROR : I only accept integers !");
-						else
-							sign += 1;
-					}
-					j++;
-				}
-				else
-					ft_exit("ERROR : I only accept integers !");
-			}
+			integer_check(av[i]);
 			i++;
 		}
-		data.arr = malloc((ac - 1) * sizeof(int));
 		i = 1;
-		low = 0;
+		j = 0;
+		data.size = ac - 1;
+		data.arr = malloc((ac - 1) * sizeof(int));
+		data.sort_arr = malloc((ac - 1) * sizeof(int));
+		//Fill the array and the sorted one
 		while (i < ac)
 		{
-			data.arr[low] = ft_atoi(av[i]);
+			data.arr[j] = ft_atoi(av[i]);
+			data.sort_arr[j] = data.arr[j];
 			i++;
-			low++;
+			j++;
 		}
-		data.size = ac;
-		quicksort(data.arr, 0, data.size - 1);	
+		i = 0;
+		j = 1;
+		quicksort(data.sort_arr, 0, data.size - 1);
+		//Check for duplicated integers
+		while (j < data.size)
+		{
+			if (data.sort_arr[i] == data.sort_arr[j])
+				ft_exit("ERROR: I don't accept duplicated integers !");
+			i++;
+			j++;
+		}
 	}
+	else
+		ft_exit("ERROR : You need at least 1 parameter !");
 	return (0);
 }
+
+		// i = 0;
+		// while (i < data.size)
+		// {
+		// 	ft_printf("arr[%d] = %d\n", i, data.arr[i]);
+		// 	i++;
+		// }
+		// i = 0;
+		// while (i < data.size)
+		// {
+		// 	ft_printf("sort_arr[%d] = %d\n", i, data.sort_arr[i]);
+		// 	i++;
+		// }
