@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yamrire <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 04:58:40 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/13 07:21:42 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/13 08:01:52 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,48 @@ int	is_sorted(char *arr)
 	
 }
 
-// int	*quicksort(char *arr, int start, int end)
-// {
-// 	if (start < end)
-// 	{
-// 		if (!(is_sorted(arr)))
-// 		{
-			
-// 		}
-// 	}
-// }
+void	ft_swap(int	*arr, int i, int j)
+{
+	int	tmp;
+
+	tmp = arr[i];
+	arr[i] = arr[j];
+	arr[j] = tmp;
+}
+
+int	partition(int *arr, int start, int end)
+{
+	int	x;
+	int	i;
+	int	j;
+
+	x = arr[end];
+	i = start - 1;
+	j = start;
+	while (j < end)
+	{
+		if (arr[j] >= x)
+		{
+			i++;
+			ft_swap(arr, i, j);
+		}
+		j++;
+	}
+	ft_swap(arr, i + 1, end);
+	return (i + 1);
+}
+
+void	quicksort(int *arr, int start, int end)
+{
+	int	p;
+	
+	if (start < end)
+	{
+		p = partition(arr, start, end);
+		quicksort(arr, start, p - 1);
+		quicksort(arr, p + 1, end);
+	}
+}
 
 int	main(int ac, char **av)
 {
@@ -95,7 +127,7 @@ int	main(int ac, char **av)
 			low++;
 		}
 		data.size = ac;
-		data.sort_arr = quicksort(data.arr, 0, data.size - 1);
+		quicksort(data.arr, 0, data.size - 1);	
 	}
 	return (0);
 }
