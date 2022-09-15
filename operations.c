@@ -6,34 +6,17 @@
 /*   By: yamrire <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 01:10:28 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/15 03:27:05 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/15 09:29:36 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	len_arr(int *arr, int start, int end)
-{
-	int	len;
-
-	len = 0;
-	if (arr)
-	{
-		while (start > end)
-		{
-			len++;
-			start++;
-		}
-	}
-	return (len);
-	
-}
-
 void	sa(t_data data, int *top)
 {
 	int	tmp;
 	
-	if (len_arr(data.arr, 0, *top) > 1)
+	if ( *top > 1)
 	{
 		tmp = data.arr[*top];
 		data.arr[*top] = data.arr[*top - 1];
@@ -45,7 +28,7 @@ void	sb(t_data data, int *top)
 {
 	int	tmp;
 	
-	if (len_arr(data.arr, *top + 1, data.size - 1) > 1)
+	if ((data.size - (*top) - 2) > 1)
 	{
 		tmp = data.arr[*top + 1];
 		data.arr[*top + 1] = data.arr[*top + 2];

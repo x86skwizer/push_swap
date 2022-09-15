@@ -6,7 +6,7 @@
 /*   By: yamrire <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 05:05:31 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/15 03:27:31 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/15 09:27:54 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef struct s_data
 	int	iatop;
 }	t_data;
 
-int		len_arr(int *arr, int start, int end);
 void	sa(t_data data, int *top);
 void	sb(t_data data, int *top);
 void	ss(t_data data, int *top);
