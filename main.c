@@ -3,50 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yamrire <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 04:58:40 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/15 03:26:11 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/16 06:27:23 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_exit(char *str)
-{
-	ft_printf("%s\n", str);
-	exit(-1);
-}
-
-int	is_sorted(char *arr)
-{
-	int	i;
-	
-	if (arr)
-	{
-		i = 1;
-		while (arr[i])
-		{
-			if (arr[i] < arr[i - 1])
-				i++;
-			else
-				return (0);
-		}
-	}
-	else
-		ft_exit("ERROR : Empty array !");
-	return (1);
-	
-}
-
-void	ft_swap(int	*arr, int i, int j)
-{
-	int	tmp;
-
-	tmp = arr[i];
-	arr[i] = arr[j];
-	arr[j] = tmp;
-}
 
 int	partition(int *arr, int start, int end)
 {
@@ -140,33 +104,38 @@ int	main(int ac, char **av)
 			j++;
 		}
 		i = 0;
-		quicksort(data.sort_arr, 0, data.size - 1);
-		//Check for duplicated integers
-		while (i < data.size - 1)
-		{
-			if (data.sort_arr[i] == data.sort_arr[i + 1])
-				ft_exit("ERROR: I don't accept duplicated integers !");
-			i++;
-		}
-		i = 0;
 		while (i < data.size)
 		{
 			ft_printf("arr[%d] = %d\n", i, data.arr[i]);
 			i++;
 		}
-		// i = 0;
-		// while (i < data.size)
-		// {
-		// 	ft_printf("sort_arr[%d] = %d\n", i, data.sort_arr[i]);
-		// 	i++;
-		// }
-		data.iatop = -1;
-		ft_printf("iatop = %d\n", data.iatop);
-		rrb(data, &data.iatop);
+		if (!(is_sorted(data.arr, data.size)))
+		{
+			i = 0;
+			quicksort(data.sort_arr, 0, data.size - 1);
+			//Check for duplicated integers
+			while (i < data.size - 1)
+			{
+				if (data.sort_arr[i] == data.sort_arr[i + 1])
+					ft_exit("ERROR: I don't accept duplicated integers !");
+				i++;
+			}
+			if (data.size < 4)
+			{
+				if (data.size == 2)
+					sa(data, &data.iatop);
+				else if (data.size == 3)
+					sort_three_elements(data);
+			}
+			// else
+			// {
+			// 	sort_stack_a(data, &data.iatop);
+			// }
+		}
 		i = 0;
 		while (i < data.size)
 		{
-			ft_printf("rb_arr[%d] = %d\n", i, data.arr[i]);
+			ft_printf("sort_arr[%d] = %d\n", i, data.arr[i]);
 			i++;
 		}
 	}
@@ -174,3 +143,13 @@ int	main(int ac, char **av)
 		ft_exit("ERROR : You need at least 1 parameter !");
 	return (0);
 }
+
+		// i = 0;
+		// while (i < data.size)
+		// {
+		// 	ft_printf("sort_arr[%d] = %d\n", i, data.sort_arr[i]);
+		// 	i++;
+		// }
+		// data.iatop = -1;
+		// ft_printf("iatop = %d\n", data.iatop);
+		// rrb(data, &data.iatop);

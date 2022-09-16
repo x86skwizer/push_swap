@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yamrire <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 05:05:31 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/15 09:27:54 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/16 06:27:17 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,10 @@ void	rb(t_data data, int *top);
 void	rra(t_data data, int *top);
 void	rrb(t_data data, int *top);
 void	rrr(t_data data, int *top);
+void    sort_three_elements(t_data data);
+void	swap_stack_a(t_data data);
+void	ft_swap(int	*arr, int i, int j);
+int		is_sorted(int *arr, int size);
+void	ft_exit(char *str);
 
 #endif

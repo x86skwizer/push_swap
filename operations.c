@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yamrire <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 01:10:28 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/15 09:29:36 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/16 01:55:23 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	sa(t_data data, int *top)
 		tmp = data.arr[*top];
 		data.arr[*top] = data.arr[*top - 1];
 		data.arr[*top - 1] = tmp;
+		ft_printf("sa\n");
 	}
 }
 
@@ -33,6 +34,7 @@ void	sb(t_data data, int *top)
 		tmp = data.arr[*top + 1];
 		data.arr[*top + 1] = data.arr[*top + 2];
 		data.arr[*top + 2] = tmp;
+		ft_printf("sb\n");
 	}
 }
 
@@ -45,13 +47,19 @@ void	ss(t_data data, int *top)
 void	pa(t_data data, int *top)
 {
 	if (*top < data.size - 1)
+	{
 		*top -= 1;
+		ft_printf("pa\n");
+	}
 }
 
 void	pb(int *top)
 {
 	if (*top + 1 > 0)
+	{
 		*top += 1;
+		ft_printf("pb\n");
+	}
 }
 
 void	ra(t_data data, int *top)
@@ -59,7 +67,7 @@ void	ra(t_data data, int *top)
 	int	tmp;
 	int	i;
 
-	if (*top > 2)
+	if (*top > 1)
 	{
 		tmp = data.arr[*top];
 		i = *top;
@@ -69,6 +77,7 @@ void	ra(t_data data, int *top)
 			i--;
 		}
 		data.arr[i] = tmp;
+		ft_printf("ra\n");
 	}
 	else
 		sa(data, top);
@@ -89,6 +98,7 @@ void	rb(t_data data, int *top)
 			i++;
 		}
 		data.arr[data.size - 1] = tmp;
+		ft_printf("rb\n");
 	}
 	else
 		sb(data, top);
@@ -105,7 +115,7 @@ void	rra(t_data data, int *top)
 	int	tmp;
 	int	i;
 
-	if (*top > 2)
+	if (*top > 1)
 	{
 		tmp = data.arr[0];
 		i = 0;
@@ -115,6 +125,7 @@ void	rra(t_data data, int *top)
 			i++;
 		}
 		data.arr[*top] = tmp;
+		ft_printf("rra\n");
 	}
 	else
 		sa(data, top);
@@ -135,6 +146,7 @@ void	rrb(t_data data, int *top)
 			i--;
 		}
 		data.arr[*top + 1] = tmp;
+		ft_printf("rrb\n");
 	}
 	else
 		sb(data, top);
