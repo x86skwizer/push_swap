@@ -16,7 +16,7 @@ void sort_stack_a(t_data data, int *top, int end)
             return;
         }
         rot_succ = 0; 
-        put_elem = ((*top) + 1) / 2;
+        put_elem = ((*top) - end + 1) / 2;
         pu_succ = 0;
         pivot = data.sort_arr[((*top - end) / 2) + end];
         while (put_elem)
@@ -69,7 +69,7 @@ void sort_stack_b(t_data data, int *top, int end)
         rot_succ = 0; 
         put_elem = (end - (*top + 1)) / 2;
         pu_succ = 0;
-        pivot = data.sort_arr[((end - (*top + 1)) /2 ) + *top + 1];
+        pivot = data.sort_arr[((end - (*top + 1)) /2 ) + *top + 2];
         while (put_elem)
         {
             if (data.arr[(*top + 1)] > pivot)
@@ -89,14 +89,11 @@ void sort_stack_b(t_data data, int *top, int end)
 			rrb(data, top);
 			rot_succ--;
 		}
-		int stack_a_end = *top - (pu_succ - 1);
-		int stack_b_end = end;
-		ft_printf("a %d\n", stack_a_end);
-		ft_printf("b %d\n", stack_b_end);
 		sort_stack_a(data, top, *top - (pu_succ - 1) );
-        // last line
 		sort_stack_b(data, top, end );
-    } else {
+    }
+    else
+    {
 		pu_succ = end - *top;
     	while (pu_succ)
     	{
