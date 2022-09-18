@@ -6,7 +6,7 @@
 /*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 01:10:28 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/16 01:55:23 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/18 03:14:31 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	sa(t_data data, int *top)
 {
 	int	tmp;
 	
-	if ( *top > 1)
+	if ( *top > 0)
 	{
 		tmp = data.arr[*top];
 		data.arr[*top] = data.arr[*top - 1];
@@ -48,7 +48,7 @@ void	pa(t_data data, int *top)
 {
 	if (*top < data.size - 1)
 	{
-		*top -= 1;
+		*top += 1;
 		ft_printf("pa\n");
 	}
 }
@@ -57,7 +57,7 @@ void	pb(int *top)
 {
 	if (*top + 1 > 0)
 	{
-		*top += 1;
+		*top -= 1;
 		ft_printf("pb\n");
 	}
 }

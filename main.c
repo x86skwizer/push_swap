@@ -6,7 +6,7 @@
 /*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 04:58:40 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/16 06:27:23 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/18 05:21:32 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,36 +90,46 @@ int	main(int ac, char **av)
 			integer_check(av[i]);
 			i++;
 		}
-		i = 1;
+		i = ac - 1;
 		j = 0;
 		data.size = ac - 1;
 		data.arr = malloc((ac - 1) * sizeof(int));
 		data.sort_arr = malloc((ac - 1) * sizeof(int));
 		//Fill the array and the sorted one
-		while (i < ac)
+		while (i > 0)
 		{
 			data.arr[j] = ft_atoi(av[i]);
 			data.sort_arr[j] = data.arr[j];
-			i++;
+			i--;
 			j++;
 		}
-		i = 0;
-		while (i < data.size)
-		{
-			ft_printf("arr[%d] = %d\n", i, data.arr[i]);
-			i++;
-		}
+		// i = 0;
+		// while (i < data.size)
+		// {
+		// 	ft_printf("arr[%d] = %d\n", i, data.arr[i]);
+		// 	i++;
+		// }
 		if (!(is_sorted(data.arr, data.size)))
 		{
 			i = 0;
 			quicksort(data.sort_arr, 0, data.size - 1);
+			i = 0;
+			while (i < data.size)
+			{
+				ft_printf("sort_arr[%d] = %d\n", i, data.sort_arr[i]);
+				i++;
+			}
 			//Check for duplicated integers
 			while (i < data.size - 1)
 			{
 				if (data.sort_arr[i] == data.sort_arr[i + 1])
+				{
+					//ft_printf("arr[%d] = %d | arr[%d + 1] = %d\n", i, data.sort_arr[i], i, data.sort_arr[i + 1]);
 					ft_exit("ERROR: I don't accept duplicated integers !");
+				}
 				i++;
 			}
+			data.iatop = data.size - 1;
 			if (data.size < 4)
 			{
 				if (data.size == 2)
@@ -127,17 +137,17 @@ int	main(int ac, char **av)
 				else if (data.size == 3)
 					sort_three_elements(data);
 			}
-			// else
-			// {
-			// 	sort_stack_a(data, &data.iatop);
-			// }
+			else
+			{
+				sort_stack_a(data, &data.iatop, 0);
+			}
 		}
-		i = 0;
-		while (i < data.size)
-		{
-			ft_printf("sort_arr[%d] = %d\n", i, data.arr[i]);
-			i++;
-		}
+		// i = 0;
+		// while (i < data.size)
+		// {
+		// 	ft_printf("arr[%d] = %d\n", i, data.arr[i]);
+		// 	i++;
+		// }
 	}
 	else
 		ft_exit("ERROR : You need at least 1 parameter !");
