@@ -6,7 +6,7 @@
 /*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 04:58:40 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/18 05:21:32 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/19 06:01:45 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,15 +111,15 @@ int	main(int ac, char **av)
 		// }
 		if (!(is_sorted(data.arr, data.size)))
 		{
-			i = 0;
 			quicksort(data.sort_arr, 0, data.size - 1);
-			i = 0;
-			while (i < data.size)
-			{
-				ft_printf("sort_arr[%d] = %d\n", i, data.sort_arr[i]);
-				i++;
-			}
+			// i = 0;
+			// while (i < data.size)
+			// {
+			// 	ft_printf("sort_arr[%d] = %d\n", i, data.sort_arr[i]);
+			// 	i++;
+			// }
 			//Check for duplicated integers
+			i = 0;
 			while (i < data.size - 1)
 			{
 				if (data.sort_arr[i] == data.sort_arr[i + 1])
@@ -142,24 +142,14 @@ int	main(int ac, char **av)
 				sort_stack_a(data, &data.iatop, 0);
 			}
 		}
-		// i = 0;
-		// while (i < data.size)
-		// {
-		// 	ft_printf("arr[%d] = %d\n", i, data.arr[i]);
-		// 	i++;
-		// }
+		i = 0;
+		while (i < data.size)
+		{
+			ft_printf("arr[%d] = %d\n", i, data.arr[i]);
+			i++;
+		}
 	}
 	else
 		ft_exit("ERROR : You need at least 1 parameter !");
 	return (0);
 }
-
-		// i = 0;
-		// while (i < data.size)
-		// {
-		// 	ft_printf("sort_arr[%d] = %d\n", i, data.sort_arr[i]);
-		// 	i++;
-		// }
-		// data.iatop = -1;
-		// ft_printf("iatop = %d\n", data.iatop);
-		// rrb(data, &data.iatop);

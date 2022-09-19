@@ -6,7 +6,7 @@
 /*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 01:10:28 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/18 03:14:31 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/19 05:03:13 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	sb(t_data data, int *top)
 {
 	int	tmp;
 	
-	if ((data.size - (*top) - 2) > 1)
+	if ((data.size - (*top + 1)) > 1)
 	{
 		tmp = data.arr[*top + 1];
 		data.arr[*top + 1] = data.arr[*top + 2];

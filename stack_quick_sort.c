@@ -1,5 +1,5 @@
 #include "push_swap.h"
-
+#include <stdio.h>
 void sort_stack_a(t_data data, int *top, int end)
 {
     int put_elem;
@@ -17,10 +17,23 @@ void sort_stack_a(t_data data, int *top, int end)
         }
         rot_succ = 0; 
         put_elem = ((*top) - end + 1) / 2;
+        // mak(" put : %d\n",put_elem);
         pu_succ = 0;
+        // for(int i = 0; i < 4 ;i++)
+        //     printf(" %d ",data.sort_arr[i]);
+        // printf("\nsort\n");
+        // for(int i = 0; i < 4 ;i++)
+        //     printf(" %d ",data.arr[i]);
+        // printf("\nsort\n");
+
         pivot = data.sort_arr[((*top - end) / 2) + end];
+        // printf("re %d\n",((*top - end) / 2) + end);
+        // printf("e :  %d\n",end);
+        // printf("t :  %d\n",*top);
+        // printf("p :  %d\n",pivot);
         while (put_elem)
         {
+
             if (data.arr[(*top)] < pivot)
             {
 				pb(top);
@@ -32,7 +45,7 @@ void sort_stack_a(t_data data, int *top, int end)
             	ra(data, top);
             	rot_succ++;
 			}
-		  }
+		}
         while (rot_succ)
 		{
 			rra(data, top);
@@ -67,7 +80,7 @@ void sort_stack_b(t_data data, int *top, int end)
             return;
         }
         rot_succ = 0; 
-        put_elem = (end - (*top + 1)) / 2;
+        put_elem = (end - (*top)) / 2;
         pu_succ = 0;
         pivot = data.sort_arr[((end - (*top + 1)) /2 ) + *top + 2];
         while (put_elem)
