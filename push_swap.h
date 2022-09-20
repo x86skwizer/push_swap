@@ -6,7 +6,7 @@
 /*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 05:05:31 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/18 01:35:28 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/20 02:01:59 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	rb(t_data data, int *top);
 void	rra(t_data data, int *top);
 void	rrb(t_data data, int *top);
 void	rrr(t_data data, int *top);
-void    sort_three_elements(t_data data);
+void    sort_three_elements(t_data data, int *top);
 void	swap_stack_a(t_data data);
 void	ft_swap(int	*arr, int i, int j);
 int		is_sorted(int *arr, int size);

@@ -6,7 +6,7 @@
 /*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 05:25:47 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/18 00:29:55 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/20 06:34:55 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	ft_exit(char *str)
 int	is_sorted(int *arr, int size)
 {
 	int	i;
-	
 	if (arr)
 	{
 		i = 1;
@@ -47,32 +46,31 @@ void	ft_swap(int	*arr, int i, int j)
 	arr[j] = tmp;
 }
 
-void    sort_three_elements(t_data data)
+void    sort_three_elements(t_data data, int *top)
 {
-	data.iatop = data.size - 1;
 	if (data.arr[2] > data.arr[1])
 	{
 		if (data.arr[1] > data.arr[0])
 		{
-			sa(data, &data.iatop);
-			rra(data, &data.iatop);
+			sa(data, top);
+			rra(data, top);
 		}
 		else if (data.arr[1] < data.arr[0])
 		{
 			if (data.arr[2] > data.arr[0])
-				ra(data, &data.iatop);
+				ra(data, top);
 			else if (data.arr[2] < data.arr[0])
-				sa(data, &data.iatop);
+				sa(data, top);
 		}
 	}
 	else if (data.arr[2] < data.arr[1])
 	{
 		if (data.arr[2] < data.arr[0])
 		{
-			sa(data, &data.iatop);
-			ra(data, &data.iatop);
+			sa(data, top);
+			ra(data, top);
 		}
 		else if (data.arr[2] > data.arr[0])
-			rra(data, &data.iatop);
+			rra(data, top);
 	}
 }
