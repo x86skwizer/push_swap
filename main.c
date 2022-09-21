@@ -6,7 +6,7 @@
 /*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 04:58:40 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/21 03:41:16 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/21 11:24:09 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	sort_kick_duplicate(t_data data)
 	while (i < data.size - 1)
 	{
 		if (data.sort_arr[i] == data.sort_arr[i + 1])
-			ft_exit("ERROR: I don't accept duplicated integers !");
+			ft_exit();
 		i++;
 	}
 }
@@ -47,7 +47,7 @@ int	main(int ac, char **av)
 	t_data	data;
 	int		i;
 
-	if (ac > 1)
+	if (ac > 2)
 	{
 		i = 1;
 		while (av[i])
@@ -61,8 +61,8 @@ int	main(int ac, char **av)
 		data.sort_arr = malloc((ac - 1) * sizeof(int));
 		fill_array(data, ac, av);
 		sort_array(data);
+		free(data.arr);
+		free(data.sort_arr);
 	}
-	else
-		ft_exit("ERROR : You need at least 1 parameter !");
 	return (0);
 }

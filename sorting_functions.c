@@ -6,7 +6,7 @@
 /*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 03:35:58 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/21 04:54:35 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/21 11:26:52 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	is_sorted(int *arr, int size)
 		}
 	}
 	else
-		ft_exit("ERROR : Empty array !");
+		ft_exit();
 	return (1);
 }
 

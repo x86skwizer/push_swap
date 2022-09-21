@@ -6,15 +6,15 @@
 /*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 05:25:47 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/21 05:01:15 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/21 11:29:24 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_exit(char *str)
+void	ft_exit(void)
 {
-	ft_printf("%s\n", str);
+	write(2, "Error\n", 6);
 	exit(-1);
 }
 
@@ -29,12 +29,12 @@ void	ft_swap(int	*arr, int i, int j)
 
 void	scan_integer(char arr, int *sign, int j)
 {
-	if (j > 10)
-		ft_exit("ERROR : I only accept integers !");
+	if (j > 11)
+		ft_exit();
 	if (arr == '+' || arr == '-')
 	{
 		if (sign != 0)
-			ft_exit("ERROR : I only accept integers !");
+			ft_exit();
 		else
 			sign += 1;
 	}
@@ -48,9 +48,9 @@ void	integer_check(char *arr)
 	j = 0;
 	sign = 0;
 	if (arr[j] && (arr[j] == '-' || arr[j] == '+') && !arr[j + 1])
-		ft_exit("ERROR : I only accept integers !");
+		ft_exit();
 	if (!arr[j])
-		ft_exit("ERROR : I only accept integers !");
+		ft_exit();
 	while (arr[j])
 	{
 		if (ft_strchr("+-0123456789", arr[j]))
@@ -59,6 +59,6 @@ void	integer_check(char *arr)
 			j++;
 		}
 		else
-			ft_exit("ERROR : I only accept integers !");
+			ft_exit();
 	}
 }
