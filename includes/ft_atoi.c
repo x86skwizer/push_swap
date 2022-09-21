@@ -6,7 +6,7 @@
 /*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 21:53:01 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/13 22:00:54 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/09/21 07:59:11 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	initiate_atoi(char **src, int *sign)
 
 int	ft_atoi(const char *str)
 {
-	char	*src;
+	char		*src;
 	long long	num;
-	int		sign;
+	int			sign;
 
 	if (!ft_strlen(str))
 		return (0);

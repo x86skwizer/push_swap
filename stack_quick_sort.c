@@ -1,107 +1,122 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_quick_sort.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/21 05:09:14 by yamrire           #+#    #+#             */
+/*   Updated: 2022/09/21 07:23:54 by yamrire          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void sort_stack_a(t_data data, int *top, int end)
+void	scan_stack_a(t_data data, t_elements *elem, int *top, int end)
 {
-    int put_elem;
-    int pivot;
-    int rot_succ;
-    int pu_succ;
-    
-    if (!(is_sorted(data.arr, (*top) + 1)))
-    {
-        if ((*top) == end)
-            return;
-        if ((*top) == end + 1)
-        {
-            sa(data, top);
-            return;
-        }
-        rot_succ = 0; 
-        put_elem = ((*top) - end + 1) / 2;
-        // mak(" put : %d\n",put_elem);
-        pu_succ = 0;
-
-        pivot = data.sort_arr[((*top - end) / 2) + end];
-        while (put_elem)
-        {
-            if (data.arr[(*top)] < pivot)
-            {
-				pb(top);
-				put_elem--;
-                pu_succ++;
-            }
-            else
-            {
-            	ra(data, top);
-            	rot_succ++;
-			}
-		}
-        while (end && rot_succ)
+	elem->rot_succ = 0;
+	elem->put_elem = ((*top) - end + 1) / 2;
+	elem->pu_succ = 0;
+	elem->pivot = data.sort_arr[((*top - end) / 2) + end];
+	while (elem->put_elem)
+	{
+		if (data.arr[(*top)] < elem->pivot)
 		{
-			rra(data, top);
-			rot_succ--;
+			pb(top);
+			elem->put_elem--;
+			elem->pu_succ++;
 		}
-		sort_stack_a(data, top, end);
-		sort_stack_b(data, top, (*top + 1) + (pu_succ - 1) );
-    }
-	
+		else
+		{
+			ra(data, top);
+			elem->rot_succ++;
+		}
+	}
 }
 
-void sort_stack_b(t_data data, int *top, int end)
+void	sort_stack_a(t_data data, int *top, int end)
 {
+	t_elements	elem;
 
-    int put_elem;
-    int pivot;
-    int rot_succ;
-    int pu_succ;
-    
-    if (!(is_sorted(data.arr + (*top + 1), end - *top)))
-    {
-        if (end == *top + 2)
-        {
-            sb(data, top);
-            pa(data, top);
-            pa(data, top);
-            return;
-        }
-        else if (end == *top + 1)
-        {
-            pa(data, top);
-            return;
-        }
-        rot_succ = 0; 
-        put_elem = ((end - (*top + 1)) / 2) + 1;
-        pu_succ = 0;
-        pivot = data.sort_arr[((end - (*top + 1)) /2 ) + *top + 2];
-        while (put_elem)
-        {
-            if (data.arr[(*top + 1)] > pivot)
-            {
-				pa(data, top);
-				put_elem--;
-                pu_succ++;
-            }
-            else
-            {
-            	rb(data, top);
-            	rot_succ++;
-			}
-		  }
-        while ((end < data.size - 1) && rot_succ)
+	if (!(is_sorted(data.arr, (*top) + 1)))
+	{
+		if ((*top) == end)
+			return ;
+		if ((*top) == end + 1)
 		{
-			rrb(data, top);
-			rot_succ--;
+			sa(data, top);
+			return ;
 		}
-		sort_stack_a(data, top, *top - (pu_succ - 1) );
-		sort_stack_b(data, top, end );
-    }
-    else
-    {
-		pu_succ = end - *top;
-    	while (pu_succ)
-    	{
-    	    pa(data, top);
-			pu_succ--;
-    	}
+		scan_stack_a(data, &elem, top, end);
+		while (end && elem.rot_succ)
+		{
+			rra(data, top);
+			elem.rot_succ--;
+		}
+		sort_stack_a(data, top, end);
+		sort_stack_b(data, top, (*top + 1) + (elem.pu_succ - 1));
+	}
+}
+
+void	scan_stack_b(t_data data, t_elements *elem, int *top, int end)
+{
+	elem->rot_succ = 0;
+	elem->put_elem = ((end - (*top + 1)) / 2) + 1;
+	elem->pu_succ = 0;
+	elem->pivot = data.sort_arr[((end - (*top + 1)) / 2) + (*top + 2)];
+	while (elem->put_elem)
+	{
+		if (data.arr[(*top + 1)] > elem->pivot)
+		{
+			pa(data, top);
+			elem->put_elem--;
+			elem->pu_succ++;
+		}
+		else
+		{
+			rb(data, top);
+			elem->rot_succ++;
+		}
+	}
+	while ((end < data.size - 1) && elem->rot_succ)
+	{
+		rrb(data, top);
+		elem->rot_succ--;
+	}
+}
+
+void	push_to_a(t_data *data, int *end, int **top, t_elements	*elem)
+{
+	if (*end == **top + 2)
+	{
+		sb(*data, *top);
+		pa(*data, *top);
+		pa(*data, *top);
+		return ;
+	}
+	else if (*end == **top + 1)
+	{
+		pa(*data, *top);
+		return ;
+	}
+	scan_stack_b(*data, elem, *top, *end);
+	sort_stack_a(*data, *top, **top - (elem->pu_succ - 1));
+	sort_stack_b(*data, *top, *end);
+}
+
+void	sort_stack_b(t_data data, int *top, int end)
+{
+	t_elements	elem;
+
+	if (!(is_sorted(data.arr + (*top + 1), end - *top)))
+		push_to_a (&data, &end, &top, &elem);
+	else
+	{
+		elem.pu_succ = end - *top;
+		while (elem.pu_succ)
+		{
+			pa(data, top);
+			elem.pu_succ--;
+		}
 	}
 }
