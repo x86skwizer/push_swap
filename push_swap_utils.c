@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yamrire <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 05:25:47 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/21 11:29:24 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/11/20 20:44:23 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	scan_integer(char arr, int *sign, int j)
 		ft_exit();
 	if (arr == '+' || arr == '-')
 	{
-		if (sign != 0)
+		if (*sign != 0)
 			ft_exit();
 		else
-			sign += 1;
+			*sign += 1;
 	}
 }
 

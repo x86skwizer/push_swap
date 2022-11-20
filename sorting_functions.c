@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_functions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yamrire <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 03:35:58 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/21 11:26:52 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/11/20 21:04:36 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,10 @@ int	is_sorted(int *arr, int size)
 	return (1);
 }
 
-void	three_five(t_data data, int tmp)
+void	three_five(t_data data)
 {
-	int	size;
-
 	if (!(is_sorted(data.arr, data.size)))
 		sort_three_elements(data, &data.iatop);
-	size = data.size - tmp - 1;
 	while (data.iatop != data.size - 1)
 		pa(data, &data.iatop);
 }
@@ -95,7 +92,7 @@ void	sort_five_elements(t_data data)
 			else
 				ra(data, &data.iatop);
 		}
-		three_five(data, tmp);
+		three_five(data);
 	}
 }
 

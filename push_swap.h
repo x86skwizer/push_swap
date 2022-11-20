@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yamrire <yamrire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yamrire <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 05:05:31 by yamrire           #+#    #+#             */
-/*   Updated: 2022/09/21 11:25:41 by yamrire          ###   ########.fr       */
+/*   Updated: 2022/11/20 21:04:11 by yamrire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		is_sorted(int *arr, int size);
 void	ft_exit(void);
 void	sort_stack_a(t_data data, int *top, int end);
 void	sort_stack_b(t_data data, int *top, int end);
-void	three_five(t_data data, int tmp);
+void	three_five(t_data data);
 void	sort_five_elements(t_data data);
 void	sort_array(t_data data);
 void	sort_kick_duplicate(t_data data);
