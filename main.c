@@ -47,7 +47,7 @@ int	main(int ac, char **av)
 	t_data	data;
 	int		i;
 
-	if (ac > 2)
+	if (ac > 1)
 	{
 		i = 1;
 		while (av[i])
